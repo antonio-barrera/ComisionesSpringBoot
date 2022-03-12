@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Comisiones | Editar</title>
+        <link rel="stylesheet" type="text/css" href="static/css/main.css" th:href="@{/css/main.css}">
+    </head>
+    <body>
+        <div class="contenedor">
+            <h1>Editar Registro</h1>
+            <div th:if="${empleados != null and !empleados.empty}">
+                <form action="editarRegistro" method="post">
+                    <table border="1">
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Nombre</th>
+                        </tr>
+                        <tr th:each="empleado : ${empleados}">
+                            <td th:text="${empleado.codigo}"></td>
+                            <td th:text="${empleado.nombre}"></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td><label for="codigo">Código del que desea cambiar:</label></td>
+                            <td><input type="number" name="codigo"></input></td>
+                        </tr>
+                        <tr>
+                            <td><label for="nombre">Nombre:</label></td>
+                            <td><input type="text" name="nombre"></input></td>
+                        </tr>
+                        <tr>
+                            <td><label for="enero">Enero:</label></td>
+                            <td><input type="double" name="enero"></input></td>
+                        </tr>
+                        <tr>
+                            <td><label for="febrero">Febrero</label></td>
+                            <td><input type="double" name="febrero"></input></td>
+                        </tr>
+                        <tr>
+                            <td><label for="marzo">Marzo</label></td>
+                            <td><input type="double" name="marzo"></input></td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" value="Editar"></input></td>
+                        </tr>
+                    </table>
+                </form>
+                <p th:text = "${msg}"></p>
+            </div>
+            <div th:if ="${empleados == null or empleados.empty}">
+                No hay registros.
+            </div>
+            <a href="http://www.localhost:8080"><input type="button" value="Regresar"></a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="https://www.thymeleaf.org" lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Comisiones | Listar</title>
+        <link rel="stylesheet" type="text/css" href="static/css/main.css" th:href="@{/css/main.css}">
+    </head>
+    <body>
+        <div class="contenedor">
+            <h1>Listar Registros</h1>
+            <div th:if="${empleados != null and !empleados.empty}">
+                <table border="1">
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Enero</th>
+                        <th>Febrero</th>
+                        <th>Marzo</th>
+                        <th>Total</th>
+                        <th>Promedio</th>
+                    </tr>
+                    <tr th:each="empleado : ${empleados}">
+                        <td th:text="${empleado.codigo}"></td>
+                        <td th:text="${empleado.nombre}"></td>
+                        <td th:text="${empleado.enero}"></td>
+                        <td th:text="${empleado.febrero}"></td>
+                        <td th:text="${empleado.marzo}"></td>
+                        <td th:text="${empleado.total}"></td>
+                        <td th:text="${empleado.promedio}"></td>
+                    </tr>
+                </table>
+            </div>
+            <div th:if ="${empleados == null or empleados.empty}">
+                No hay registros.
+            </div>
+            <a href="http://www.localhost:8080"><input type="button" value="Regresar"></a>
+        </div>
+    </body>
+</html>
